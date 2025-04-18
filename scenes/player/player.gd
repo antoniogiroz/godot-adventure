@@ -1,9 +1,11 @@
 class_name Player extends CharacterBody2D
 
+## Movement speed in pixels per second
 @export var speed: float = 100.0
+## Strength applied when pushing objects
 @export var push_strength: float = 300.0
 
-@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var _animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 
 func _ready() -> void:
@@ -13,35 +15,37 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	var direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
-
 	velocity = direction * speed
 
-	_animate_player()
-
-	_push_when_collide()
+	_update_animation()
+	_handle_collisions()
 
 	move_and_slide()
 
 
-func _animate_player() -> void:
+func _update_animation() -> void:
 	if velocity.x > 0:
-		animated_sprite_2d.play("move_right")
+		_animated_sprite.play("move_right")
 	elif velocity.x < 0:
-		animated_sprite_2d.play("move_left")
+		_animated_sprite.play("move_left")
 	elif velocity.y > 0:
-		animated_sprite_2d.play("move_down")
+		_animated_sprite.play("move_down")
 	elif velocity.y < 0:
-		animated_sprite_2d.play("move_up")
+		_animated_sprite.play("move_up")
 	else:
-		animated_sprite_2d.stop()
+		_animated_sprite.stop()
 
 
-func _push_when_collide() -> void:
+func _handle_collisions() -> void:
 	var collision = get_last_slide_collision()
 	if not collision:
 		return
 
-	var collider_node = collision.get_collider()
-	if collider_node.is_in_group("pushable"):
-		var collision_normal := collision.get_normal()
-		collider_node.apply_central_force(-collision_normal * push_strength)
+	var collider := collision.get_collider()
+	if collider and collider.is_in_group("pushable"):
+		_push_object(collider, collision.get_normal())
+
+
+func _push_object(object: Node, normal: Vector2) -> void:
+	if object.has_method("apply_central_force"):
+		object.apply_central_force(-normal * push_strength)
