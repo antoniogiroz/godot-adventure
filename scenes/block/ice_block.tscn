@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://woo3fhtt8ir4"]
+
+[ext_resource type="PackedScene" uid="uid://f13gvgjjtwnd" path="res://scenes/block/block.tscn" id="1_1xlek"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1xlek"]
+bounce = 0.05
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1xlek"]
+load_path = "res://.godot/imported/TilesetDungeon.png-8b26e4826c3b72d63472265de704b4be.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1xlek"]
+atlas = SubResource("CompressedTexture2D_1xlek")
+region = Rect2(1, 33, 14, 15)
+
+[node name="IceBlock" instance=ExtResource("1_1xlek")]
+physics_material_override = SubResource("PhysicsMaterial_1xlek")
+linear_damp = 0.2
+
+[node name="Sprite2D" parent="." index="1"]
+texture = SubResource("AtlasTexture_1xlek")
