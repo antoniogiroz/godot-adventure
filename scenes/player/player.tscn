@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dl2bfrs2r5ts1"]
+[gd_scene load_steps=22 format=3 uid="uid://dl2bfrs2r5ts1"]
 
 [ext_resource type="Script" uid="uid://d00np080nfm2x" path="res://scenes/player/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://djbw1me0groy7" path="res://assets/Actor/Characters/NinjaBlue2/SeparateAnim/Walk.png" id="2_dovo2"]
@@ -142,6 +142,9 @@ animations = [{
 radius = 5.0
 height = 12.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dovo2"]
+size = Vector2(8, 8)
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 7
@@ -156,3 +159,10 @@ frame_progress = 0.794274
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_g2els")
+
+[node name="InteractionArea" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("RectangleShape2D_dovo2")
+debug_color = Color(0.266163, 0.633321, 0, 0.42)

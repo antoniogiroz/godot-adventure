@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://b3sgbbkodv3y"]
+[gd_scene load_steps=23 format=4 uid="uid://b3sgbbkodv3y"]
 
 [ext_resource type="Texture2D" uid="uid://cq37lwr43qv5i" path="res://assets/Backgrounds/Tilesets/TilesetFloor.png" id="1_7h61r"]
 [ext_resource type="PackedScene" uid="uid://dl2bfrs2r5ts1" path="res://scenes/player/player.tscn" id="1_sul5r"]
@@ -7,7 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://c74trpqb4a4sx" path="res://scenes/locked_door/locked_door.tscn" id="5_87uf6"]
 [ext_resource type="PackedScene" uid="uid://dtmpwgvxseroy" path="res://scenes/scene_entrance/scene_entrance.tscn" id="5_lfrn8"]
 [ext_resource type="PackedScene" uid="uid://f13gvgjjtwnd" path="res://scenes/block/block.tscn" id="6_5i0tg"]
+[ext_resource type="Texture2D" uid="uid://fudw5lp2qcr3" path="res://assets/Actor/Characters/NinjaDark/SpriteSheet.png" id="6_kp23o"]
+[ext_resource type="Texture2D" uid="uid://bnnk8r8ts1jxf" path="res://assets/Actor/Characters/NinjaDark/Faceset.png" id="7_5jirj"]
 [ext_resource type="PackedScene" uid="uid://0iryubauelwp" path="res://scenes/puzzle_button/puzzle_button.tscn" id="7_bdhmt"]
+[ext_resource type="Texture2D" uid="uid://dq8rx4t5x3qp5" path="res://assets/Actor/Characters/NinjaMageBlack/SpriteSheet.png" id="8_vaxfo"]
+[ext_resource type="PackedScene" uid="uid://dvrapxuwyws1j" path="res://scenes/npm/npc.tscn" id="9_2a8rs"]
+[ext_resource type="Texture2D" uid="uid://bj3vgxxaqy1fw" path="res://assets/Actor/Characters/NinjaMageBlack/Faceset.png" id="9_ftsea"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0sr1o"]
 texture = ExtResource("1_7h61r")
@@ -824,6 +829,14 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_kelw5")
 sources/1 = SubResource("TileSetAtlasSource_lfrn8")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_vaxfo"]
+atlas = ExtResource("6_kp23o")
+region = Rect2(1, 1, 14, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_otnwt"]
+atlas = ExtResource("8_vaxfo")
+region = Rect2(1, 1, 14, 15)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_87uf6"]
 size = Vector2(67, 8)
 
@@ -849,6 +862,48 @@ position = Vector2(990, 151)
 y_sort_enabled = true
 tile_map_data = PackedByteArray("AAAeAA8AAAACAAAAAAAKABgAAAAAAAIAAAAIABcAAAAAAAIAAAAFABUAAAAAAAIAAAADABgAAAAAAAIAAAAEABgAAAAAAAIAAAAFABcAAAAAAAIAAAAFABYAAAAAAAIAAAAhABgAAAAAAAIAAAAkABYAAAAAAAIAAAAnABUAAAAAAAIAAAAlABcAAAAAAAIAAAAoABcAAAAAAAIAAAAsABUAAAAAAAIAAAAuABMAAAAAAAIAAAAxABQAAAAAAAIAAAAvABUAAAAAAAIAAAA3ABMAAAAAAAIAAAA6ABIAAAAAAAIAAAA8ABIAAAAAAAIAAAA9ABIAAAAAAAIAAAA/ABIAAAAAAAIAAABAABIAAAAAAAIAAABCABEAAAAAAAIAAABGABEAAAAAAAIAAABHABEAAAAAAAIAAABHABIAAAAAAAIAAABIABMAAAAAAAIAAABIABUAAAAAAAIAAABCABQAAAAAAAIAAAA/ABQAAAAAAAIAAAA9ABQAAAAAAAIAAAAzAAoAAAAAAAIAAAAwAAoAAAAAAAIAAAAyAAcAAAAAAAIAAAA3AAkAAAAAAAIAAAA3AAoAAAAAAAIAAAA3AAsAAAAAAAIAAABDAAgAAAAAAAIAAABGAAkAAAAAAAIAAABHAAYAAAAAAAIAAABHAAQAAAAAAAIAAABEAAQAAAAAAAIAAABBAAIAAAAAAAIAAABHAAAAAAAAAAIAAABFAAEAAAAAAAIAAABHAAIAAAAAAAIAAABCAAAAAAAAAAIAAAA4AAIAAAAAAAIAAAA0AAMAAAAAAAIAAAA0AAIAAAAAAAIAAAA1AAAAAAAAAAIAAAA0AAQAAAAAAAIAAAA0AAUAAAAAAAIAAAA4AAMAAAAAAAIAAAA+AAAAAAAAAAIAAAA5AAEAAAAAAAIAAAADAAgAAAAAAAIAAAABAAYAAAAAAAIAAAABAAQAAAAAAAIAAAACAAQAAAAAAAIAAAAFAAEAAAAAAAIAAAAHAAEAAAAAAAIAAAAIAAEAAAAAAAIAAAAJAAEAAAAAAAIAAAALAAEAAAAAAAIAAAAMAAEAAAAAAAIAAAANAAIAAAAAAAIAAAANAAQAAAAAAAIAAAAOAAUAAAAAAAIAAAAOAAYAAAAAAAIAAAAOAAgAAAAAAAIAAAAQAAkAAAAAAAIAAAAEAAIAAAAAAAIAAAAAAAEAAAAAAAIAAAAAAAkAAAAAAAIAAAAHAAkAAAAAAAIAAAARAAQAAAAAAAIAAAAPAAEAAAAAAAIAAAAQAAEAAAAAAAIAAAAYAAEAAAAAAAIAAAAZAAAAAAAAAAIAAAAaAAAAAAAAAAIAAAAZAAMAAAAAAAIAAAAcAAMAAAAAAAIAAAAdAAEAAAAAAAIAAAAeAAEAAAAAAAIAAAAfAAAAAAAAAAIAAAAbAAcAAAAAAAIAAAAZAAkAAAAAAAIAAAAjAAUAAAAAAAIAAAAkAAcAAAAAAAIAAAAQABkAAAAAAAIAAAAQABUAAAAAAAIAAAAQABMAAAAAAAIAAAATABQAAAAAAAIAAAAaABgAAAAAAAIAAAAdABgAAAAAAAIAAAANABEAAAAAAAIAAAAZABIAAAAAAAIAAAAWABMAAAAAAAIAAAAVABEAAAAAAAIAAAAjAA8AAAAAAAIAAAAnAA4AAAAAAAIAAAACABMAAAAAAAIAAAAEABEAAAAAAAIAAAAsAA0AAAACAAAAAAAVAAsAAAACAAAAAAA8AAUAAQAAAAcAAAA=")
 tile_set = SubResource("TileSet_lfrn8")
+
+[node name="NPC" parent="Obstacles" instance=ExtResource("9_2a8rs")]
+position = Vector2(638, 125)
+dialogue_lines = Array[String](["Hey bro, did you know you can interact with things by pressing X?", "Oh, you already knew that by talking to me, huh?"])
+
+[node name="DialogLabel" parent="Obstacles/NPC/CanvasLayer" index="1"]
+text = "Hi Antonio! Welcome to this world!"
+
+[node name="NpcName" parent="Obstacles/NPC/CanvasLayer" index="3"]
+text = "Red Ninja"
+
+[node name="NPC2" parent="Obstacles" instance=ExtResource("9_2a8rs")]
+position = Vector2(388, 190)
+dialogue_lines = Array[String](["I heard rumors there was a cave to the east...", "You should probably go check it out."])
+
+[node name="Sprite2D" parent="Obstacles/NPC2" index="0"]
+texture = SubResource("AtlasTexture_vaxfo")
+
+[node name="DialogLabel" parent="Obstacles/NPC2/CanvasLayer" index="1"]
+text = "Hey, did you know that there's a cave in the east?"
+
+[node name="NpcImage" parent="Obstacles/NPC2/CanvasLayer" index="2"]
+texture = ExtResource("7_5jirj")
+
+[node name="NpcName" parent="Obstacles/NPC2/CanvasLayer" index="3"]
+text = "Dark Ninja"
+
+[node name="NPC3" parent="Obstacles" instance=ExtResource("9_2a8rs")]
+position = Vector2(936, 103)
+dialogue_lines = Array[String](["You think you can beat my dungeon? Bwahahah!", "I bet you won't even solve the first puzzle inside!"])
+
+[node name="Sprite2D" parent="Obstacles/NPC3" index="0"]
+texture = SubResource("AtlasTexture_otnwt")
+
+[node name="DialogLabel" parent="Obstacles/NPC3/CanvasLayer" index="1"]
+text = "Mwahahahahahahahahahaha!"
+
+[node name="NpcImage" parent="Obstacles/NPC3/CanvasLayer" index="2"]
+texture = ExtResource("9_ftsea")
+
+[node name="NpcName" parent="Obstacles/NPC3/CanvasLayer" index="3"]
+text = "Dark Mage	"
 
 [node name="Player" parent="Obstacles" instance=ExtResource("1_sul5r")]
 position = Vector2(582, 179)
@@ -894,3 +949,7 @@ shape = SubResource("RectangleShape2D_2a8rs")
 
 [connection signal="pressed" from="PuzzleButton" to="LockedDoor" method="_on_button_pressed"]
 [connection signal="unpressed" from="PuzzleButton" to="LockedDoor" method="_on_button_unpressed"]
+
+[editable path="Obstacles/NPC"]
+[editable path="Obstacles/NPC2"]
+[editable path="Obstacles/NPC3"]
